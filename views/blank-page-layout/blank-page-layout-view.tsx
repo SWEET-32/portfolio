@@ -1,5 +1,5 @@
 const BlankPageLayoutView = () => {
-  return <main className="min-h-[calc(100vh-73px)] bg-[#fafafa]" />;
+  return <main className="bg-[#fafafa]" />;
 };
 
 export default BlankPageLayoutView;

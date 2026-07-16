@@ -1,17 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#home", active: true },
-  { label: "Skill", href: "#skill" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Skill", href: "/skill" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header className="border-b border-yellow-400 bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-5 py-4 sm:px-6 lg:px-8 lg:py-5">
@@ -27,7 +32,7 @@ export function SiteHeader() {
                   href={item.href}
                   className={cn(
                     "rounded-full px-4 py-2.5 text-sm transition-colors",
-                    item.active
+                    pathname === item.href
                       ? "bg-neutral-900 text-white"
                       : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
                   )}
