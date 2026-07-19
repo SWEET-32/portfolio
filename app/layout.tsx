@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 
 const geistHeading = Geist({subsets:['latin'],variable:'--font-heading'});
 
@@ -31,9 +32,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, geistHeading.variable)}
+      className={cn("h-full scroll-smooth", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, geistHeading.variable)}
     >
       <body className="min-h-full flex flex-col">
+        <SiteHeader />
         <div className="flex min-h-full flex-1 flex-col">{children}</div>
         <SiteFooter />
       </body>
