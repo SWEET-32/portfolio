@@ -1,21 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Skill", href: "/skill" },
-  { label: "Experience", href: "/experience" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "#home" },
+  { label: "Skill", href: "#skill" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "skill", "experience", "projects", "blog", "contact"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="border-b border-yellow-400 bg-white">
@@ -32,7 +53,7 @@ export function SiteHeader() {
                   href={item.href}
                   className={cn(
                     "rounded-full px-4 py-2.5 text-sm transition-colors",
-                    pathname === item.href
+                    activeSection === item.href.slice(1)
                       ? "bg-neutral-900 text-white"
                       : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
                   )}
