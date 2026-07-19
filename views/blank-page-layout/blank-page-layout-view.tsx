@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SkillsView } from "@/views/skills/skills-view";
 
 const BlankPageLayoutView = () => {
   return (
@@ -59,10 +60,7 @@ const BlankPageLayoutView = () => {
       </main>
 
       {/* Skill Section */}
-      <section id="skill" className="mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-semibold text-neutral-900 mb-8">Skills</h2>
-        <p className="text-neutral-600 text-lg">Your skills content goes here...</p>
-      </section>
+      <SkillsView />
 
       {/* Experience Section */}
       <section id="experience" className="mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8 bg-[#f5f5f5]">
