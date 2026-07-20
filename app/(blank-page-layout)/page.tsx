@@ -1,7 +1,7 @@
-import BlankPageLayoutView from "@/views/blank-page-layout/blank-page-layout-view";
+import HomeView from "@/views/home/home-view";
 
 const HomePage = () => {
-    return <BlankPageLayoutView />;
+  return <HomeView />;
 };
 
 export default HomePage;
